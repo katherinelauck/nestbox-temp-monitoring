@@ -1,0 +1,26 @@
+,1,2,3,4,5,6,7,8,9,10,11,12
+A,0.062,0.058,0.950,0.964,0.001,0.065,0.239,0.718,0.734,0.000,-0.000,-0.000
+B,1.244,1.214,1.053,1.080,0.001,0.935,0.870,0.786,0.816,0.000,0.000,-0.000
+C,0.166,0.157,1.158,1.160,0.001,0.153,0.140,0.859,0.854,0.001,0.001,0.000
+D,0.245,0.233,0.561,0.558,0.001,0.183,0.199,0.230,0.229,0.001,0.001,0.000
+E,0.323,0.332,0.770,0.741,0.000,0.270,0.242,0.325,0.317,-0.000,0.000,-0.000
+F,0.462,0.447,0.964,0.946,0.000,0.403,0.362,0.461,0.455,-0.000,-0.000,-0.000
+G,0.612,0.618,1.109,1.077,0.000,0.494,0.496,0.627,0.597,-0.000,-0.000,-0.000
+H,0.840,0.828,1.160,1.189,0.000,0.616,0.619,0.649,0.739,-0.000,-0.000,-0.000
+
+
+
+,1,2,3,4,5,6,7,8,9,10,11,12
+A,Sample 1,Sample 1,Sample 9,Sample 9,,Sample 17,Sample 17,Sample 25,Sample 25,,,
+B,Sample 2,Sample 2,Sample 10,Sample 10,,Sample 18,Sample 18,Sample 26,Sample 26,,,
+C,Sample 3,Sample 3,Sample 11,Sample 11,,Sample 19,Sample 19,Sample 27,Sample 27,,,
+D,Sample 4,Sample 4,Sample 12,Sample 12,,Sample 20,Sample 20,Sample 28,Sample 28,,,
+E,Sample 5,Sample 5,Sample 13,Sample 13,,Sample 21,Sample 21,Sample 29,Sample 29,,,
+F,Sample 6,Sample 6,Sample 14,Sample 14,,Sample 22,Sample 22,Sample 30,Sample 30,,,
+G,Sample 7,Sample 7,Sample 15,Sample 15,,Sample 23,Sample 23,Sample 31,Sample 31,,,
+H,Sample 8,Sample 8,Sample 16,Sample 16,,Sample 24,Sample 24,Sample 32,Sample 32,,,
+
+
+
+Sample (nm),450
+Reference (nm),-1
