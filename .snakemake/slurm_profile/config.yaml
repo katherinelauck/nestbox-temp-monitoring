@@ -1,0 +1,33 @@
+---
+snakefile: Snakefile
+latency-wait: 60
+reason: True
+show-failed-logs: True
+keep-going: True
+printshellcmds: True
+rerun-incomplete: True
+restart-times: 3
+# Cluster submission
+jobname: "{rule}.{jobid}"              # Provide a custom name for the jobscript that is submitted to the cluster.
+max-status-checks-per-second: 1        #Maximal number of job status checks per second, default is 10
+jobs: 500                              #Use at most N CPU cluster/cloud jobs in parallel.
+cluster: "sbatch --output=\".snakemake/slurm_logs/{rule}/slurm_%x_%j.out\" --error=\".snakemake/slurm_logs/{rule}/slurm_%x_%j.log\" --mem={resources.mem_mb} --time={resources.runtime} --cpus-per-task={threads}"
+# Job resources
+#set-resources:
+#    - make_stackhost:mem="64GB"
+#    - make_stackhost:runtime="10d"
+#    - run_noautocorr:mem="10GB"
+#    - run_noautocorr:runtime="4h"
+#    - run_inla_models:mem="256GM"
+#    - run_inla_models:runtime="10d"
+#    - run_inla_models:slurm_partition="med2"
+#    - make_inla_plots:mem="5GB"
+#    - make_inla_plots:runtime="2h"
+#    - inla_morani_table:runtime="1h"
+# For some reasons time needs quotes to be read by snakemake
+default-resources:
+  - mem_mb=1000
+  - runtime="20m"
+# Define the number of threads used by rules
+#set-threads:
+#  - run_inla-models=12
