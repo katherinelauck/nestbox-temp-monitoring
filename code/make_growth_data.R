@@ -5,12 +5,6 @@
 
 require(tidyverse)
 require(lubridate)
-require(ggeffects)
-require(lme4)
-library(hemispheR)
-library(viridis)
-library(ggpubr)
-library(patchwork)
 source("helper_functions.R")
 
 ### todo
