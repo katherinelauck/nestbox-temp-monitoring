@@ -2,13 +2,12 @@
 
 require(tidyverse)
 require(lubridate)
-source("helper_functions.R")
 
 pix <- list.files("data/canopy-cover-pictures/",pattern = ".*rds$",full.names = TRUE) %>%
-  map(read_rds()) %>%
+  map(read_rds) %>%
   list_rbind()
 
-cc <- nestbox_drive_get("canopy_cover_picture_log") %>%
+cc <- read_rds("data/canopy_cover_log.rds") %>%
   select(date,nestbox,picture_file_name,canopy_cover) %>%
   mutate(date = as_date(date,tz = "America/Los_Angeles"),
          picture_file_name = ifelse(str_detect(picture_file_name,"100"),str_c(picture_file_name,".JPG"),NA),
@@ -18,3 +17,6 @@ cc <- nestbox_drive_get("canopy_cover_picture_log") %>%
   mutate(canopy_cover = ifelse(is.na(canopy_cover),100-DIFN,canopy_cover),
          year = year(date)) %>%
   select(year,nestbox,canopy_cover)
+
+write_rds(cc,"data/cc.rds")
+

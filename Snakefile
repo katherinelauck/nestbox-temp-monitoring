@@ -27,7 +27,9 @@ rule make_temp_data:
         runtime="20m"
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/make_temp_data.R
         """
 
@@ -41,9 +43,12 @@ rule canopy_cover:
         "~/miniconda3/envs/nestbox",
     resources:
         runtime="20m",
+        mem="12GB",
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/canopy_cover.R {wildcards.file}
         """
 
@@ -59,7 +64,9 @@ rule cat_canopy_cover:
         runtime="20m",
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/cat_canopy_cover.R
         """
 
@@ -76,6 +83,8 @@ rule cat_canopy_cover:
 #         runtime="2h",
 #     shell:
 #         """
+#         set +eu
+#         source ~/miniconda3/etc/profile.d/conda.sh
 #         conda activate nestbox
 #         Rscript code/make_growth_data.R
 #         """
