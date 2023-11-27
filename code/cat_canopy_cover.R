@@ -19,3 +19,4 @@ cc <- read_rds("data/canopy_cover_log.rds") %>%
   select(year,nestbox,canopy_cover)
 
 write_rds(cc,"data/cc.rds")
+
