@@ -62,7 +62,7 @@ rule cat_canopy_cover:
 #     output:
 #         "data/growth.rds",
 #     conda:
-        "~/miniconda3/envs/nestbox",
+#         "~/miniconda3/envs/nestbox",
 #     resources:
 #         runtime="2h",
 #     shell:
