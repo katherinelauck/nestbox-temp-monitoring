@@ -1,0 +1,17 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
++ snakemake --unlock
+Unlocking working directory.
++ snakemake -j 500 --slurm --profile .snakemake/slurm_profile/
+Traceback (most recent call last):
+  File "/home/kslauck/mambaforge/envs/nestwatch/lib/python3.11/site-packages/snakemake/__init__.py", line 757, in snakemake
+    success = workflow.execute(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/mambaforge/envs/nestwatch/lib/python3.11/site-packages/snakemake/workflow.py", line 693, in execute
+    self.persistence = Persistence(
+                       ^^^^^^^^^^^^
+  File "/home/kslauck/mambaforge/envs/nestwatch/lib/python3.11/site-packages/snakemake/persistence.py", line 53, in __init__
+    os.mkdir(self._lockdir)
+FileExistsError: [Errno 17] File exists: '/home/kslauck/projects/nestbox-temp-monitoring/.snakemake/locks'

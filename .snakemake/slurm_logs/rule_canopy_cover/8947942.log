@@ -1,0 +1,125 @@
+==========================================
+SLURM_JOB_ID = 8947942
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:23:07 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1469.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:23:40 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:23:41 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947942 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:23:02
+Start               : 2023-11-27T01:23:03
+End                 : 2023-11-27T01:23:41
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:38
+Used CPU time       : 00:00:35
+% User (Computation): 77.41%
+% System (I/O)      : 22.59%
+Mem reserved        : 12000M
+Max Mem used        : 936.57M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)

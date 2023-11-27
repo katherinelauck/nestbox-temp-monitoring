@@ -1,0 +1,23 @@
+
+############### Job 8945126 summary ###############
+Name                : e9f2fb49-64d3-4d49-89d3-25fa7cedec68
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-74
+Cores               : 2
+GPUs                : 0
+State               : CANCELLED,CANCELLED by 1662786
+ExitCode            : 0:0
+Submit              : 2023-11-26T21:57:53
+Start               : 2023-11-26T21:57:54
+End                 : 2023-11-26T22:06:21
+Reserved walltime   : 00:20:00
+Used walltime       : 00:08:27
+Used CPU time       : 00:00:00
+% User (Computation): --
+% System (I/O)      : --
+Mem reserved        : 1000M
+Max Mem used        : --
+Max Disk Write      : --
+Max Disk Read       : --

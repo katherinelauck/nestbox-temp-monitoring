@@ -1,0 +1,1325 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+all                     1
+canopy_cover            2
+cat_canopy_cover        1
+total                   4
+
+Select jobs to execute...
+
+[Mon Nov 27 01:20:12 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+No SLURM account given, trying to guess.
+Guessed SLURM account: adamgrp
+Job 3 has been submitted with SLURM jobid 8947935 (log: .snakemake/slurm_logs/rule_canopy_cover/8947935.log).
+
+[Mon Nov 27 01:20:12 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947936 (log: .snakemake/slurm_logs/rule_canopy_cover/8947936.log).
+[Mon Nov 27 01:21:22 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947935' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947935.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947935.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947935
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:20:17 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1531.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:20:52 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:20:52 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947935 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:20:12
+Start               : 2023-11-27T01:20:13
+End                 : 2023-11-27T01:20:52
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:39
+Used CPU time       : 00:00:35
+% User (Computation): 79.28%
+% System (I/O)      : 20.72%
+Mem reserved        : 12000M
+Max Mem used        : 1.08G (cpu-10-72)
+Max Disk Write      : 40.96K (cpu-10-72)
+Max Disk Read       : 61.28M (cpu-10-72)
+================================================================================
+
+[Mon Nov 27 01:21:22 2023]
+Trying to restart job 3.
+Select jobs to execute...
+Error in rule canopy_cover:
+    message: SLURM-job '8947936' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947936.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947936.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947936
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:20:17 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1469.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:20:54 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:20:54 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947936 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:20:12
+Start               : 2023-11-27T01:20:13
+End                 : 2023-11-27T01:20:54
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:41
+Used CPU time       : 00:00:36
+% User (Computation): 79.26%
+% System (I/O)      : 20.74%
+Mem reserved        : 12000M
+Max Mem used        : 1.42G (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)
+================================================================================
+
+
+[Mon Nov 27 01:21:22 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Job 3 has been submitted with SLURM jobid 8947937 (log: .snakemake/slurm_logs/rule_canopy_cover/8947937.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:21:22 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947938 (log: .snakemake/slurm_logs/rule_canopy_cover/8947938.log).
+[Mon Nov 27 01:22:12 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947937' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947937.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947937.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947937
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:21:27 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1531.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:22:01 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:22:01 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947937 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:21:22
+Start               : 2023-11-27T01:21:23
+End                 : 2023-11-27T01:22:02
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:39
+Used CPU time       : 00:00:35
+% User (Computation): 78.46%
+% System (I/O)      : 21.54%
+Mem reserved        : 12000M
+Max Mem used        : 1.05G (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.28M (cpu-10-88)
+================================================================================
+
+[Mon Nov 27 01:22:12 2023]
+Trying to restart job 3.
+Error in rule canopy_cover:
+    message: SLURM-job '8947938' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947938.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947938.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947938
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:21:27 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1469.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:22:00 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:22:00 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947938 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:21:22
+Start               : 2023-11-27T01:21:23
+End                 : 2023-11-27T01:22:01
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:38
+Used CPU time       : 00:00:36
+% User (Computation): 77.53%
+% System (I/O)      : 22.47%
+Mem reserved        : 12000M
+Max Mem used        : 855.13M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)
+================================================================================
+
+Select jobs to execute...
+
+[Mon Nov 27 01:22:12 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Job 3 has been submitted with SLURM jobid 8947939 (log: .snakemake/slurm_logs/rule_canopy_cover/8947939.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:22:12 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947940 (log: .snakemake/slurm_logs/rule_canopy_cover/8947940.log).
+[Mon Nov 27 01:23:02 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947939' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947939.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947939.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947939
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:22:17 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1531.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:22:49 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:22:50 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947939 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:22:12
+Start               : 2023-11-27T01:22:13
+End                 : 2023-11-27T01:22:50
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:37
+Used CPU time       : 00:00:35
+% User (Computation): 76.79%
+% System (I/O)      : 23.21%
+Mem reserved        : 12000M
+Max Mem used        : 936.58M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.28M (cpu-10-88)
+================================================================================
+
+[Mon Nov 27 01:23:02 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947940' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947940.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947940.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947940
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:22:17 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1469.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:22:51 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:22:51 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947940 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:22:12
+Start               : 2023-11-27T01:22:13
+End                 : 2023-11-27T01:22:51
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:38
+Used CPU time       : 00:00:35
+% User (Computation): 78.80%
+% System (I/O)      : 21.20%
+Mem reserved        : 12000M
+Max Mem used        : 907.18M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)
+================================================================================
+
+Trying to restart job 3.
+Select jobs to execute...
+
+[Mon Nov 27 01:23:02 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Job 3 has been submitted with SLURM jobid 8947941 (log: .snakemake/slurm_logs/rule_canopy_cover/8947941.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:23:02 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947942 (log: .snakemake/slurm_logs/rule_canopy_cover/8947942.log).
+[Mon Nov 27 01:23:52 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947941' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947941.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947941.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947941
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:23:07 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1531.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:23:41 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:23:41 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947941 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:23:02
+Start               : 2023-11-27T01:23:03
+End                 : 2023-11-27T01:23:41
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:38
+Used CPU time       : 00:00:35
+% User (Computation): 78.84%
+% System (I/O)      : 21.16%
+Mem reserved        : 12000M
+Max Mem used        : 1.19G (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.28M (cpu-10-88)
+================================================================================
+
+[Mon Nov 27 01:23:52 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947942' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947942.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947942.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947942
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:23:07 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Error in saveRDS(x, con, version = version, refhook = refhook, ascii = text) : 
+  cannot open the connection
+Calls: %>% -> write_rds -> saveRDS
+In addition: Warning message:
+In saveRDS(x, con, version = version, refhook = refhook, ascii = text) :
+  cannot open file '/data/canopy-cover-pictures/IMG_1469.JPG.rds': No such file or directory
+Execution halted
+[Mon Nov 27 01:23:40 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:23:41 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947942 summary ###############
+Name                : fdb786a9-1a07-4f8b-8b9a-0909c149275a
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:23:02
+Start               : 2023-11-27T01:23:03
+End                 : 2023-11-27T01:23:41
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:38
+Used CPU time       : 00:00:35
+% User (Computation): 77.41%
+% System (I/O)      : 22.59%
+Mem reserved        : 12000M
+Max Mem used        : 936.57M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)
+================================================================================
+
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-27T012011.104413.snakemake.log

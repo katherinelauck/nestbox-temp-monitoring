@@ -1,0 +1,183 @@
+==========================================
+SLURM_JOB_ID = 8947969
+SLURM_NODELIST = cpu-10-88
+==========================================
+## Script:
+import sys
+import re
+import os
+
+file_exts = ['jpg','jpeg']
+CC=[f for f in os.listdir('data/canopy-cover-pictures/') if f.lower().split('.')[-1] in file_exts][0:2]
+print(CC)
+
+wildcard_constraints:
+    file=".*(JPG|JPEG|jpg|jpeg){1}",
+
+rule all:
+    input:
+        "data/temp.rds",
+        "data/cc.rds",
+        # "data/growth.rds",
+
+rule make_temp_data:
+    input:
+        "code/make_temp_data.R",
+    output:
+        "data/temp.rds",
+        "data/wmean.rds",
+    resources:
+        runtime="20m"
+    shell:
+        """
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/make_temp_data.R
+        """
+
+rule canopy_cover:
+    input:
+        expand("data/canopy-cover-pictures/{file}",file=CC),
+        "code/canopy_cover.R",
+    output:
+        "data/canopy-cover-pictures/{file}.rds",
+    resources:
+        runtime="20m",
+        mem="12GB",
+    shell:
+        """
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R {wildcards.file}
+        """
+
+rule cat_canopy_cover:
+    input:
+        expand("data/canopy-cover-pictures/{file}.rds", file=CC),
+        "code/cat_canopy_cover.R",
+    output:
+        "data/cc.rds",
+    resources:
+        runtime="20m",
+    shell:
+        """
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/cat_canopy_cover.R
+        """
+
+# rule make_growth_data:
+#     input:
+#         "data/temp.rds",
+#         "data/cc.rds",
+#         "code/make_growth_data.R",
+#     output:
+#         "data/growth.rds",
+#     resources:
+#         runtime="2h",
+#     shell:
+#         """
+#         set +eu
+#         source ~/miniconda3/etc/profile.d/conda.sh
+#         conda activate nestbox
+#         Rscript code/make_growth_data.R
+#         """
+## Output:
+['IMG_1531.JPG', 'IMG_1469.JPG']
+['IMG_1531.JPG', 'IMG_1469.JPG']
+SLURM_JOB_USER=kslauck
+SLURM_TASKS_PER_NODE=4
+SLURM_JOB_UID=1662786
+SLURM_TASK_PID=2330511
+SLURM_LOCALID=0
+SLURM_SUBMIT_DIR=/home/kslauck/projects/nestbox-temp-monitoring
+SLURMD_NODENAME=cpu-10-88
+SLURM_JOB_START_TIME=1701078456
+SLURM_NODE_ALIASES=(null)
+SLURM_CLUSTER_NAME=farm
+SLURM_JOB_END_TIME=1701510456
+SLURM_CPUS_ON_NODE=4
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_GTIDS=0
+SLURM_JOB_PARTITION=med
+SLURM_JOB_NUM_NODES=1
+SLURM_JOBID=8947969
+SLURM_JOB_QOS=adamgrp-med-qos
+SLURM_PROCID=0
+SLURM_CPUS_PER_TASK=1
+SLURM_TOPOLOGY_ADDR=cpu-10-88
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SLURM_SCRIPT_CONTEXT=prolog_task
+SLURM_MEM_PER_NODE=8192
+SLURM_WORKING_CLUSTER=farm:monitoring-ib:6817:9984:109
+SLURM_ROOT=/share/apps/22.04/slurm/23.02.6
+SLURM_NODELIST=cpu-10-88
+SLURM_JOB_ACCOUNT=adamgrp
+SLURM_PRIO_PROCESS=0
+SLURM_NNODES=1
+SLURM_SUBMIT_HOST=farm
+SLURM_JOB_ID=8947969
+SLURM_NODEID=0
+SLURM_CONF=/share/apps/22.04/slurm/23.02.6/etc/slurm.conf
+SLURM_JOB_NAME=snakemake
+SLURM_JOB_GID=1662786
+SLURM_JOB_NODELIST=cpu-10-88
+JobId=8947969 JobName=snakemake
+   UserId=kslauck(1662786) GroupId=kslauck(1662786) MCS_label=N/A
+   Priority=2394 Nice=0 Account=adamgrp QOS=adamgrp-med-qos
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:05:38 TimeLimit=5-00:00:00 TimeMin=N/A
+   SubmitTime=2023-11-27T01:47:36 EligibleTime=2023-11-27T01:47:36
+   AccrueTime=2023-11-27T01:47:36
+   StartTime=2023-11-27T01:47:36 EndTime=2023-12-02T01:47:36 Deadline=N/A
+   PreemptEligibleTime=2023-11-27T01:47:36 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-11-27T01:47:36 Scheduler=Main
+   Partition=med AllocNode:Sid=farm:181653
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=cpu-10-88
+   BatchHost=cpu-10-88
+   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=8G,node=1,billing=1
+   AllocTRES=cpu=4,mem=8G,node=1,billing=4
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=4 MinMemoryNode=8G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/kslauck/projects/nestbox-temp-monitoring/code/Snakefile.sh
+   WorkDir=/home/kslauck/projects/nestbox-temp-monitoring
+   StdErr=/home/kslauck/projects/nestbox-temp-monitoring/slurm_log/sterror_8947969.txt
+   StdIn=/dev/null
+   StdOut=/home/kslauck/projects/nestbox-temp-monitoring/slurm_log/stdoutput_8947969.txt
+   Power=
+   MailUser=kslauck@ucdavis.edu MailType=BEGIN,END
+   
+
+JobID|MaxRSS|AveCPU
+8947969.batch|49928K|00:00:04
+
+############### Job 8947969 summary ###############
+Name                : snakemake
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 4
+GPUs                : 0
+State               : COMPLETED
+ExitCode            : 0:0
+Submit              : 2023-11-27T01:47:36
+Start               : 2023-11-27T01:47:36
+End                 : 2023-11-27T01:53:14
+Reserved walltime   : 5-00:00:00
+Used walltime       :   00:05:38
+Used CPU time       :   00:00:04
+% User (Computation): 71.89%
+% System (I/O)      : 28.11%
+Mem reserved        : 8G
+Max Mem used        : 48.76M (cpu-10-88)
+Max Disk Write      : 92.16K (cpu-10-88)
+Max Disk Read       : 54.88M (cpu-10-88)

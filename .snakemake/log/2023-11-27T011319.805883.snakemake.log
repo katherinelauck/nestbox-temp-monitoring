@@ -1,0 +1,1005 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+all                     1
+canopy_cover            2
+cat_canopy_cover        1
+total                   4
+
+Select jobs to execute...
+
+[Mon Nov 27 01:13:20 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+No SLURM account given, trying to guess.
+Guessed SLURM account: adamgrp
+Job 3 has been submitted with SLURM jobid 8947926 (log: .snakemake/slurm_logs/rule_canopy_cover/8947926.log).
+
+[Mon Nov 27 01:13:21 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947927 (log: .snakemake/slurm_logs/rule_canopy_cover/8947927.log).
+[Mon Nov 27 01:14:00 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947926' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947926.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947926.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947926
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:13:25 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:13:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:13:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947926 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:13:21
+Start               : 2023-11-27T01:13:21
+End                 : 2023-11-27T01:13:26
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 74.83%
+% System (I/O)      : 25.17%
+Mem reserved        : 1000M
+Max Mem used        : 60.00K (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 0.00  (cpu-10-72)
+================================================================================
+
+[Mon Nov 27 01:14:00 2023]
+Trying to restart job 3.
+Select jobs to execute...
+
+[Mon Nov 27 01:14:00 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Error in rule canopy_cover:
+    message: SLURM-job '8947927' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947927.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947927.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947927
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:13:25 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:13:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:13:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947927 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:13:21
+Start               : 2023-11-27T01:13:21
+End                 : 2023-11-27T01:13:26
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 76.57%
+% System (I/O)      : 23.43%
+Mem reserved        : 1000M
+Max Mem used        : 52.96M (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 10.24K (cpu-10-72)
+================================================================================
+
+Job 3 has been submitted with SLURM jobid 8947928 (log: .snakemake/slurm_logs/rule_canopy_cover/8947928.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:14:00 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947929 (log: .snakemake/slurm_logs/rule_canopy_cover/8947929.log).
+[Mon Nov 27 01:14:21 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947928' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947928.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947928.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947928
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:05 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:05 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:05 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947928 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:00
+Start               : 2023-11-27T01:14:01
+End                 : 2023-11-27T01:14:06
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 78.13%
+% System (I/O)      : 21.83%
+Mem reserved        : 1000M
+Max Mem used        : 4.00K (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 10.24K (cpu-10-72)
+================================================================================
+
+[Mon Nov 27 01:14:21 2023]
+Trying to restart job 3.
+Select jobs to execute...
+Error in rule canopy_cover:
+    message: SLURM-job '8947929' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947929.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947929.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947929
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:05 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:05 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:05 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947929 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:00
+Start               : 2023-11-27T01:14:01
+End                 : 2023-11-27T01:14:06
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 74.46%
+% System (I/O)      : 25.54%
+Mem reserved        : 1000M
+Max Mem used        : 24.98M (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 0.00  (cpu-10-72)
+================================================================================
+
+
+[Mon Nov 27 01:14:21 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Job 3 has been submitted with SLURM jobid 8947930 (log: .snakemake/slurm_logs/rule_canopy_cover/8947930.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:14:21 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947931 (log: .snakemake/slurm_logs/rule_canopy_cover/8947931.log).
+[Mon Nov 27 01:14:41 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947930' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947930.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947930.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947930
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:25 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947930 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:21
+Start               : 2023-11-27T01:14:21
+End                 : 2023-11-27T01:14:25
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:04
+Used CPU time       : 00:00:02
+% User (Computation): 75.70%
+% System (I/O)      :  0.00%
+Mem reserved        : 1000M
+Max Mem used        : 64.00K (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 0.00  (cpu-10-72)
+================================================================================
+
+[Mon Nov 27 01:14:41 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947931' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947931.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947931.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947931
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:25 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:25 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947931 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:21
+Start               : 2023-11-27T01:14:21
+End                 : 2023-11-27T01:14:25
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:04
+Used CPU time       : 00:00:02
+% User (Computation): 75.15%
+% System (I/O)      : 24.81%
+Mem reserved        : 1000M
+Max Mem used        : 15.88M (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 0.00  (cpu-10-72)
+================================================================================
+
+Trying to restart job 3.
+Select jobs to execute...
+
+[Mon Nov 27 01:14:41 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+Job 3 has been submitted with SLURM jobid 8947932 (log: .snakemake/slurm_logs/rule_canopy_cover/8947932.log).
+Trying to restart job 4.
+Select jobs to execute...
+
+[Mon Nov 27 01:14:41 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947933 (log: .snakemake/slurm_logs/rule_canopy_cover/8947933.log).
+[Mon Nov 27 01:15:01 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947932' failed, SLURM status is: 'FAILED'
+    jobid: 3
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947932.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947932.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947932
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:45 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:45 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:45 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947932 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:41
+Start               : 2023-11-27T01:14:41
+End                 : 2023-11-27T01:14:46
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 78.00%
+% System (I/O)      : 21.97%
+Mem reserved        : 1000M
+Max Mem used        : 16.00K (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 10.24K (cpu-10-72)
+================================================================================
+
+[Mon Nov 27 01:15:01 2023]
+Error in rule canopy_cover:
+    message: SLURM-job '8947933' failed, SLURM status is: 'FAILED'
+    jobid: 4
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    log: .snakemake/slurm_logs/rule_canopy_cover/8947933.log (check log file(s) for error details)
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Logfile .snakemake/slurm_logs/rule_canopy_cover/8947933.log:
+================================================================================
+==========================================
+SLURM_JOB_ID = 8947933
+SLURM_NODELIST = cpu-10-72
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:14:45 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+/home/kslauck/miniconda3/envs/nestbox/etc/conda/activate.d/activate-binutils_linux-64.sh: line 68: ADDR2LINE: unbound variable
+[Mon Nov 27 01:14:45 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-72: task 0: Exited with exit code 1
+[Mon Nov 27 01:14:45 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        source ~/miniconda3/bin/activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947933 summary ###############
+Name                : 55070a29-8aec-4763-9b1e-d69a7b827a07
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-72
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:14:41
+Start               : 2023-11-27T01:14:41
+End                 : 2023-11-27T01:14:46
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:05
+Used CPU time       : 00:00:02
+% User (Computation): 78.58%
+% System (I/O)      : 21.38%
+Mem reserved        : 1000M
+Max Mem used        : 64.00K (cpu-10-72)
+Max Disk Write      : 0.00  (cpu-10-72)
+Max Disk Read       : 0.00  (cpu-10-72)
+================================================================================
+
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-27T011319.805883.snakemake.log
