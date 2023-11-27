@@ -26,7 +26,7 @@ rule make_temp_data:
     resources:
         runtime="20m"
     shell:
-        "Rscript code/make_temp_data.R"
+        "conda activate nestbox;Rscript code/make_temp_data.R"
 
 rule canopy_cover:
     input:
@@ -39,7 +39,7 @@ rule canopy_cover:
     resources:
         runtime="20m",
     shell:
-        "Rscript code/canopy_cover.R {wildcards.file}"
+        "conda activate nestbox;Rscript code/canopy_cover.R {wildcards.file}"
 
 rule cat_canopy_cover:
     input:
@@ -52,7 +52,7 @@ rule cat_canopy_cover:
     resources:
         runtime="20m",
     shell:
-        "Rscript code/cat_canopy_cover.R"
+        "conda activate nestbox;Rscript code/cat_canopy_cover.R"
 
 # rule make_growth_data:
 #     input:
