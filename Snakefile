@@ -43,6 +43,7 @@ rule canopy_cover:
         "~/miniconda3/envs/nestbox",
     resources:
         runtime="20m",
+        mem="12GB",
     shell:
         """
         set +eu
