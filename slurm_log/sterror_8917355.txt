@@ -1,0 +1,8 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
++ snakemake --unlock
+Unlocking working directory.
++ snakemake -j 500 --slurm --profile .snakemake/slurm_profile/
+Error: profile given but no config.yaml found. Profile has to be given as either absolute path, relative path or name of a directory available in either /etc/xdg/snakemake or /home/kslauck/.config/snakemake.
