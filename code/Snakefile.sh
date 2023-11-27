@@ -21,7 +21,7 @@ echo "## Output:"
 . ~/miniconda3/etc/profile.d/conda.sh
 
 # activate mamba environment
-conda activate nestbox
+conda activate base
 
 # fail on weird errors
 set -e
