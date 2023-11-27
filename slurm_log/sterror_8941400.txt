@@ -1,0 +1,6 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
++ snakemake --unlock
+/var/spool/slurmd/job8941400/slurm_script: line 31: snakemake: command not found

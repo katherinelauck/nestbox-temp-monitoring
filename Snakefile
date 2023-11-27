@@ -21,8 +21,6 @@ rule make_temp_data:
     output:
         "data/temp.rds",
         "data/wmean.rds",
-    conda:
-        "~/miniconda3/envs/nestbox",
     resources:
         runtime="20m"
     shell:
@@ -39,8 +37,6 @@ rule canopy_cover:
         "code/canopy_cover.R",
     output:
         "data/canopy-cover-pictures/{file}.rds",
-    conda:
-        "~/miniconda3/envs/nestbox",
     resources:
         runtime="20m",
         mem="12GB",
@@ -58,8 +54,6 @@ rule cat_canopy_cover:
         "code/cat_canopy_cover.R",
     output:
         "data/cc.rds",
-    conda:
-        "~/miniconda3/envs/nestbox",
     resources:
         runtime="20m",
     shell:
@@ -77,8 +71,6 @@ rule cat_canopy_cover:
 #         "code/make_growth_data.R",
 #     output:
 #         "data/growth.rds",
-#     conda:
-#         "~/miniconda3/envs/nestbox",
 #     resources:
 #         runtime="2h",
 #     shell:

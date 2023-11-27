@@ -1,0 +1,7 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
+/var/spool/slurmd/job8941149/slurm_script: line 21: /home/kslauck/mambaforge/etc/profile.d/mamba.sh: No such file or directory
++ snakemake --unlock
+/var/spool/slurmd/job8941149/slurm_script: line 31: snakemake: command not found

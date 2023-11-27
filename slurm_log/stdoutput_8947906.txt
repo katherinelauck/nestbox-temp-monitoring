@@ -1,0 +1,116 @@
+==========================================
+SLURM_JOB_ID = 8947906
+SLURM_NODELIST = cpu-9-74
+==========================================
+## Script:
+import sys
+import re
+import os
+
+file_exts = ['jpg','jpeg']
+CC=[f for f in os.listdir('data/canopy-cover-pictures/') if f.lower().split('.')[-1] in file_exts][0:2]
+print(CC)
+
+wildcard_constraints:
+    file=".*(JPG|JPEG|jpg|jpeg){1}",
+
+rule all:
+    input:
+        "data/temp.rds",
+        "data/cc.rds",
+        # "data/growth.rds",
+
+rule make_temp_data:
+    input:
+        "code/make_temp_data.R",
+    output:
+        "data/temp.rds",
+        "data/wmean.rds",
+    conda:
+        "~/miniconda3/envs/nestbox",
+    resources:
+        runtime="20m"
+    shell:
+        """
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/make_temp_data.R
+        """
+
+rule canopy_cover:
+    input:
+        expand("data/canopy-cover-pictures/{file}",file=CC),
+        "code/canopy_cover.R",
+    output:
+        "data/canopy-cover-pictures/{file}.rds",
+    conda:
+        "~/miniconda3/envs/nestbox",
+    resources:
+        runtime="20m",
+    shell:
+        """
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R {wildcards.file}
+        """
+
+rule cat_canopy_cover:
+    input:
+        expand("data/canopy-cover-pictures/{file}.rds", file=CC),
+        "code/cat_canopy_cover.R",
+    output:
+        "data/cc.rds",
+    conda:
+        "~/miniconda3/envs/nestbox",
+    resources:
+        runtime="20m",
+    shell:
+        """
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/cat_canopy_cover.R
+        """
+
+# rule make_growth_data:
+#     input:
+#         "data/temp.rds",
+#         "data/cc.rds",
+#         "code/make_growth_data.R",
+#     output:
+#         "data/growth.rds",
+#     conda:
+#         "~/miniconda3/envs/nestbox",
+#     resources:
+#         runtime="2h",
+#     shell:
+#         """
+#         source ~/miniconda3/etc/profile.d/conda.sh
+#         conda activate nestbox
+#         Rscript code/make_growth_data.R
+#         """
+## Output:
+['IMG_1531.JPG', 'IMG_1469.JPG']
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947906 summary ###############
+Name                : snakemake
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-9-74
+Cores               : 4
+GPUs                : 0
+State               : RUNNING,FAILED
+ExitCode            : --
+Submit              : 2023-11-27T00:55:30
+Start               : 2023-11-27T00:55:30
+End                 : --
+Reserved walltime   : 5-00:00:00
+Used walltime       :   00:02:08
+Used CPU time       :   00:00:04
+% User (Computation): 73.35%
+% System (I/O)      : 26.63%
+Mem reserved        : 8G
+Max Mem used        : 48.82M (cpu-9-74)
+Max Disk Write      : 143.36K (cpu-9-74)
+Max Disk Read       : 54.37M (cpu-9-74)

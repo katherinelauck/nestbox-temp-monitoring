@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+all                     1
+canopy_cover            2
+cat_canopy_cover        1
+total                   4
+
+Select jobs to execute...
+
+[Mon Nov 27 01:28:59 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    jobid: 3
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1531.JPG.rds
+    wildcards: file=IMG_1531.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1531.JPG
+        
+No SLURM account given, trying to guess.
+Guessed SLURM account: adamgrp
+Job 3 has been submitted with SLURM jobid 8947944 (log: .snakemake/slurm_logs/rule_canopy_cover/8947944.log).
+
+[Mon Nov 27 01:28:59 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 4
+    reason: Missing output files: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Job 4 has been submitted with SLURM jobid 8947945 (log: .snakemake/slurm_logs/rule_canopy_cover/8947945.log).

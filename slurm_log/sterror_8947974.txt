@@ -1,0 +1,57 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
++ snakemake --unlock
+Unlocking working directory.
++ snakemake -j 500 --slurm --profile .snakemake/slurm_profile/
+Using profile .snakemake/slurm_profile/ for setting default command line arguments.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Job stats:
+job                 count
+----------------  -------
+all                     1
+cat_canopy_cover        1
+total                   2
+
+Select jobs to execute...
+
+[Mon Nov 27 01:52:40 2023]
+rule cat_canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG.rds, data/canopy-cover-pictures/IMG_1469.JPG.rds, code/cat_canopy_cover.R
+    output: data/cc.rds
+    jobid: 2
+    reason: Missing output files: data/cc.rds
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, runtime=20
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/cat_canopy_cover.R
+        
+No SLURM account given, trying to guess.
+Guessed SLURM account: adamgrp
+Job 2 has been submitted with SLURM jobid 8947975 (log: .snakemake/slurm_logs/rule_cat_canopy_cover/8947975.log).
+[Mon Nov 27 01:53:20 2023]
+Finished job 2.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Mon Nov 27 01:53:20 2023]
+localrule all:
+    input: data/temp.rds, data/cc.rds
+    jobid: 0
+    reason: Input files updated by another job: data/cc.rds
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+[Mon Nov 27 01:53:20 2023]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2023-11-27T015239.816755.snakemake.log
++ env
++ grep SLURM
++ scontrol show job 8947974
++ sstat --format JobID,MaxRSS,AveCPU -P 8947974.batch

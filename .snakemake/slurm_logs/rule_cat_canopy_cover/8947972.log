@@ -1,0 +1,100 @@
+==========================================
+SLURM_JOB_ID = 8947972
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954
+Select jobs to execute...
+
+[Mon Nov 27 01:51:08 2023]
+rule cat_canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG.rds, data/canopy-cover-pictures/IMG_1469.JPG.rds, code/cat_canopy_cover.R
+    output: data/cc.rds
+    jobid: 0
+    reason: Forced execution
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/cat_canopy_cover.R
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Warning message:
+There were 130 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `canopy_cover = as.numeric(canopy_cover)`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 129 remaining warnings. 
+Waiting at most 60 seconds for missing files.
+MissingOutputException in rule cat_canopy_cover in file /home/kslauck/projects/nestbox-temp-monitoring/Snakefile, line 51:
+Job 0 completed successfully, but some output files are missing. Missing files after 60 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+data/cc.rds
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:52:12 2023]
+Error in rule cat_canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG.rds, data/canopy-cover-pictures/IMG_1469.JPG.rds, code/cat_canopy_cover.R
+    output: data/cc.rds
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/cat_canopy_cover.R
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947972 summary ###############
+Name                : 0aeb3926-ced0-45cf-8c93-7529fb5048b6
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 2
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:51:04
+Start               : 2023-11-27T01:51:04
+End                 : 2023-11-27T01:52:13
+Reserved walltime   : 00:20:00
+Used walltime       : 00:01:09
+Used CPU time       : 00:00:06
+% User (Computation): 76.75%
+% System (I/O)      : 23.23%
+Mem reserved        : 1000M
+Max Mem used        : 50.77M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 37.49M (cpu-10-88)

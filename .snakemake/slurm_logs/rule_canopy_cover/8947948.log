@@ -1,0 +1,143 @@
+==========================================
+SLURM_JOB_ID = 8947948
+SLURM_NODELIST = cpu-10-88
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954
+Conda environments: ignored
+Select jobs to execute...
+
+[Mon Nov 27 01:30:37 2023]
+rule canopy_cover:
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    jobid: 0
+    reason: Forced execution
+    wildcards: file=IMG_1469.JPG
+    resources: mem_mb=12000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=20, mem=12GB
+
+
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+Loading required package: tidyverse
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘dplyr’ was built under R version 4.3.2 
+2: package ‘stringr’ was built under R version 4.3.2 
+Loading required package: terra
+terra 1.7.55
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+It is a circular fisheye, where xc, yc and radius are 1944, 1296, 1294
+Traceback (most recent call last):
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/__init__.py", line 792, in snakemake
+    success = workflow.execute(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/workflow.py", line 1246, in execute
+    raise e
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/workflow.py", line 1242, in execute
+    success = self.scheduler.schedule()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/scheduler.py", line 550, in schedule
+    self._finish_jobs()
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/scheduler.py", line 650, in _finish_jobs
+    self.get_executor(job).handle_job_success(job)
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/executors/__init__.py", line 730, in handle_job_success
+    super().handle_job_success(job)
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/executors/__init__.py", line 293, in handle_job_success
+    job.postprocess(
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/jobs.py", line 1193, in postprocess
+    self.dag.workflow.persistence.finished(
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/persistence.py", line 272, in finished
+    conda_env = self._conda_env(job)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/persistence.py", line 456, in _conda_env
+    return b64encode(job.conda_env.content).decode()
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/deployment/conda.py", line 156, in content
+    self._content = self._get_content()
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/deployment/conda.py", line 124, in _get_content
+    content = shell.check_output(
+              ^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/site-packages/snakemake/shell.py", line 61, in check_output
+    return sp.check_output(cmd, shell=True, executable=executable, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kslauck/miniconda3/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'conda env export --name '~/miniconda3/envs/nestbox'' returned non-zero exit status 1.
+['IMG_1531.JPG', 'IMG_1469.JPG']
+srun: error: cpu-10-88: task 0: Exited with exit code 1
+[Mon Nov 27 01:31:14 2023]
+Error in rule canopy_cover:
+    jobid: 0
+    input: data/canopy-cover-pictures/IMG_1531.JPG, data/canopy-cover-pictures/IMG_1469.JPG, code/canopy_cover.R
+    output: data/canopy-cover-pictures/IMG_1469.JPG.rds
+    conda-env: ~/miniconda3/envs/nestbox
+    shell:
+        
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/canopy_cover.R IMG_1469.JPG
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job canopy_cover since they might be corrupted:
+data/canopy-cover-pictures/IMG_1469.JPG.rds
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+['IMG_1531.JPG', 'IMG_1469.JPG']
+
+############### Job 8947948 summary ###############
+Name                : 0d18c867-c3b7-4d8f-8e5e-a625377303f5
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 6
+GPUs                : 0
+State               : FAILED
+ExitCode            : 1:0
+Submit              : 2023-11-27T01:30:33
+Start               : 2023-11-27T01:30:33
+End                 : 2023-11-27T01:31:14
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:41
+Used CPU time       : 00:00:39
+% User (Computation): 76.62%
+% System (I/O)      : 23.37%
+Mem reserved        : 12000M
+Max Mem used        : 1000.53M (cpu-10-88)
+Max Disk Write      : 40.96K (cpu-10-88)
+Max Disk Read       : 61.62M (cpu-10-88)

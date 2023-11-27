@@ -1,0 +1,7 @@
+Unloading openmpi/4.1.5
+Unloading slurm/23.02.6
+Loading slurm/23.02.6
+Loading openmpi/4.1.5
++ snakemake --unlock
+SyntaxError in file /home/kslauck/projects/nestbox-temp-monitoring/Snakefile, line 65:
+invalid syntax

@@ -1,0 +1,23 @@
+
+############### Job 8944383 summary ###############
+Name                : 8f8d58c2-7be8-43eb-aa4e-ef2c757f79c7
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-68
+Cores               : 2
+GPUs                : 0
+State               : CANCELLED,CANCELLED by 1662786
+ExitCode            : 0:0
+Submit              : 2023-11-26T21:44:38
+Start               : 2023-11-26T21:44:39
+End                 : 2023-11-26T21:55:27
+Reserved walltime   : 00:20:00
+Used walltime       : 00:10:48
+Used CPU time       : 00:00:00
+% User (Computation): --
+% System (I/O)      : --
+Mem reserved        : 1000M
+Max Mem used        : --
+Max Disk Write      : --
+Max Disk Read       : --

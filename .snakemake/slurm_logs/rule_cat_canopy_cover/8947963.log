@@ -1,0 +1,28 @@
+==========================================
+SLURM_JOB_ID = 8947963
+SLURM_NODELIST = cpu-10-88
+==========================================
+slurmstepd: error: *** JOB 8947963 ON cpu-10-88 CANCELLED AT 2023-11-27T01:43:00 ***
+
+############### Job 8947963 summary ###############
+Name                : 3957ea65-e870-459c-9357-7485dc7380a1
+User                : kslauck
+Account             : adamgrp
+Partition           : med
+Nodes               : cpu-10-88
+Cores               : 2
+GPUs                : 0
+State               : CANCELLED,CANCELLED by 1662786
+ExitCode            : 0:0
+Submit              : 2023-11-27T01:42:58
+Start               : 2023-11-27T01:42:59
+End                 : 2023-11-27T01:43:00
+Reserved walltime   : 00:20:00
+Used walltime       : 00:00:01
+Used CPU time       : 00:00:00
+% User (Computation): --
+% System (I/O)      : --
+Mem reserved        : 1000M
+Max Mem used        : --
+Max Disk Write      : --
+Max Disk Read       : --
