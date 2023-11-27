@@ -11,4 +11,4 @@ pix <- paste0("data/canopy-cover-pictures/",args[1]) %>%
   gapfrac_fisheye() %>%
   canopy_fisheye() %>%
   select(id,DIFN) %>%
-  write_rds(file = paste0("/data/canopy-cover-pictures/",args[1],".rds"))
+  write_rds(file = paste0("data/canopy-cover-pictures/",args[1],".rds"))
