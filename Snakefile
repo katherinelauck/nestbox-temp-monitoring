@@ -27,7 +27,7 @@ rule make_temp_data:
         runtime="20m"
     shell:
         """
-        conda activate nestbox
+        source activate nestbox
         Rscript code/make_temp_data.R
         """
 
@@ -43,7 +43,7 @@ rule canopy_cover:
         runtime="20m",
     shell:
         """
-        conda activate nestbox
+        source activate nestbox
         Rscript code/canopy_cover.R {wildcards.file}
         """
 
@@ -59,7 +59,7 @@ rule cat_canopy_cover:
         runtime="20m",
     shell:
         """
-        conda activate nestbox
+        source activate nestbox
         Rscript code/cat_canopy_cover.R
         """
 
