@@ -3,7 +3,7 @@ import re
 import os
 
 file_exts = ['jpg','jpeg']
-CC=[f for f in os.listdir('data/canopy-cover-pictures/') if f.lower().split('.')[-1] in file_exts]
+CC=[f for f in os.listdir('data/canopy-cover-pictures/') if f.lower().split('.')[-1] in file_exts][0:2]
 print(CC)
 
 wildcard_constraints:
@@ -27,7 +27,9 @@ rule make_temp_data:
         runtime="20m"
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/make_temp_data.R
         """
 
@@ -43,7 +45,9 @@ rule canopy_cover:
         runtime="20m",
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/canopy_cover.R {wildcards.file}
         """
 
@@ -59,7 +63,9 @@ rule cat_canopy_cover:
         runtime="20m",
     shell:
         """
-        source activate nestbox
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
         Rscript code/cat_canopy_cover.R
         """
 
@@ -76,6 +82,8 @@ rule cat_canopy_cover:
 #         runtime="2h",
 #     shell:
 #         """
+#         set +eu
+#         source ~/miniconda3/etc/profile.d/conda.sh
 #         conda activate nestbox
 #         Rscript code/make_growth_data.R
 #         """
