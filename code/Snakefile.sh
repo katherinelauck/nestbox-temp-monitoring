@@ -21,7 +21,7 @@ echo "## Output:"
 . ~/mambaforge/etc/profile.d/mamba.sh
 
 # activate mamba environment
-mamba activate nestwatch
+conda activate nestbox
 
 # fail on weird errors
 set -e
