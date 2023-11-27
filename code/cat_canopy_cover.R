@@ -17,3 +17,5 @@ cc <- read_rds("data/canopy_cover_log.rds") %>%
   mutate(canopy_cover = ifelse(is.na(canopy_cover),100-DIFN,canopy_cover),
          year = year(date)) %>%
   select(year,nestbox,canopy_cover)
+
+write_rds(cc,"data/cc.rds")
