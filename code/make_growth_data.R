@@ -142,4 +142,4 @@ dg <- dg %>%
          year = as_factor(year), # factorize year
          Species = as_factor(Species)) # factorize species
 
-write_rds(dg,"growth.rds")
+write_rds(dg,"data/growth.rds")
