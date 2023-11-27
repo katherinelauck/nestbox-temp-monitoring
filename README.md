@@ -1,1 +1,0 @@
-# nestbox-temp-monitoring
