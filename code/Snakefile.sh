@@ -18,7 +18,7 @@ cat Snakefile
 echo "## Output:"
 
 # initialize mamba
-. ~/mambaforge/etc/profile.d/mamba.sh
+. ~/miniconda3/etc/profile.d/conda.sh
 
 # activate mamba environment
 conda activate nestbox
