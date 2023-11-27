@@ -5,7 +5,6 @@
 
 require(tidyverse)
 require(lubridate)
-source("helper_functions.R")
 
 ### todo
 # 1. Find out how many attempts have more than three measurements, and if those measurements are legit, and if so, how to incorporate them into the growth function
@@ -14,8 +13,9 @@ source("helper_functions.R")
 # 4. Remove line 140 !(year == 2023)) when 2023 data is usable
 
 # pull data from google drive (not yet fully proofed)
-g <- nestbox_drive_get("banding-and-morphometrics")
-t <- read_rds("../data/temp.rds")
+g <- read_rds("g.rds")
+t <- read_rds("data/temp.rds")
+cc <- read_rds("data/cc.rds")
 
 # function to calculate growth by matching color and nestbox
 
@@ -97,7 +97,7 @@ dg <- gr %>%
          habitat = factor(habitat,levels = c("Forest","Orchard","Grassland","Row crop")), # order factor correctly
          interval = interval(date-ddays(7),date,tz = "America/Los_Angeles"), # specify interval to extract temp measurements
          juliandate = yday(date)) %>% # extract julian date
-  left_join(cc,by = join_by(year == year,Nestbox == nestbox)) # join canopy cover measurements
+  left_join(cc,by = join_by(year == year,Nestbox == nestbox),multiple = "first") # join canopy cover measurements
 
 filtertemp <- map2(pull(dg,interval),pull(dg,Nestbox),function(x,y){filter(t,date %within% x,box == y)}) # filter temp data to the applicable dates and boxes
 
@@ -130,8 +130,10 @@ dg <- dg %>%
                   gskull,
                   juliandate),
                 ~ scale(.x)[,1])) %>%
-  filter(!(site %in% c("FBFG","FBFR")), # remove Full Belly Farm nests
-         !(year == 2023)) %>% # remove 2023 nests, but this line can be dropped soon
+  filter(!(site %in% c("FBFG","FBFR"))
+         # , # remove Full Belly Farm nests
+         # !(year == 2023)
+         ) %>% # remove 2023 nests, but this line can be dropped soon
   mutate(site = str_replace_all(site,"MCE","MCO"), # Collapse site vectors when there are multiple site abbreviations per actual site
          site = str_replace_all(site,"PCT","PCC"),
          site = str_replace_all(site,"RRE","RRC"),
@@ -139,3 +141,5 @@ dg <- dg %>%
          site = as_factor(site), # factorize site
          year = as_factor(year), # factorize year
          Species = as_factor(Species)) # factorize species
+
+write_rds(dg,"growth.rds")

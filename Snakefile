@@ -64,19 +64,19 @@ rule cat_canopy_cover:
         Rscript code/cat_canopy_cover.R
         """
 
-# rule make_growth_data:
-#     input:
-#         "data/temp.rds",
-#         "data/cc.rds",
-#         "code/make_growth_data.R",
-#     output:
-#         "data/growth.rds",
-#     resources:
-#         runtime="2h",
-#     shell:
-#         """
-#         set +eu
-#         source ~/miniconda3/etc/profile.d/conda.sh
-#         conda activate nestbox
-#         Rscript code/make_growth_data.R
-#         """
+rule make_growth_data:
+    input:
+        "data/temp.rds",
+        "data/cc.rds",
+        "code/make_growth_data.R",
+    output:
+        "data/growth.rds",
+    resources:
+        runtime="2h",
+    shell:
+        """
+        set +eu
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate nestbox
+        Rscript code/make_growth_data.R
+        """
