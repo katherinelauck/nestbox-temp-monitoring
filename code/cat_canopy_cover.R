@@ -4,7 +4,7 @@ require(tidyverse)
 require(lubridate)
 
 pix <- list.files("data/canopy-cover-pictures/",pattern = ".*rds$",full.names = TRUE) %>%
-  map(read_rds()) %>%
+  map(read_rds) %>%
   list_rbind()
 
 cc <- read_rds("data/canopy_cover_log.rds") %>%
