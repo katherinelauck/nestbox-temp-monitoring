@@ -13,7 +13,7 @@ require(lubridate)
 # 4. Remove line 140 !(year == 2023)) when 2023 data is usable
 
 # pull data from google drive (not yet fully proofed)
-g <- read_rds("g.rds")
+g <- read_rds("data/g.rds")
 t <- read_rds("data/temp.rds")
 cc <- read_rds("data/cc.rds")
 
