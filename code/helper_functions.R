@@ -266,4 +266,45 @@ get_temp_data <- function(dir){
 }
 
 
+get_humidity_data <- function(dir){
 
+  require(lubridate)
+  require(tidyverse)
+
+  ### Return tibble of daily high, daily low, and daily range temperature from HOBO loggers. Other columns included are date, habitat, canopy cover, box, site, and whether the logger is on the inside or outside of the box.
+
+  f <- list.files(dir,pattern = "csv",full.names = TRUE)
+  collapse <- function(file_name) {
+    # Given relative file name of temperature log from one logger, collapse into tibble with one row for each complete day of temperature data.
+    if(read_csv(file_name) %>% problems() %>% nrow() > 100){
+      t <- (readLines(file_name) %>% tibble() %>% slice(2:n()) %>% pull() %>%
+              I() %>% read_csv(col_names = c("x1","x2","x3")))[,2:3]
+    } else {
+      t <- read_csv(file_name)[,2:3]
+    }
+    logger_name <- str_extract(file_name,paste0("(?<=^",dir,"/)[:graph:]+(?=\\s)"))
+    names(t) <- c("datetime","temp")
+    t$datetime <- mdy_hms(t$datetime, tz = "America/Los_Angeles")
+    t$date <- t$datetime %>% date()
+    above_40 <- function(d,...){
+      ifelse(nrow(filter(d,temp > 40,.preserve = TRUE)) == 0,
+             0,
+             interval(filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% min(na.rm = TRUE),
+                      filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% max(na.rm = TRUE)) / dhours(1))
+    }
+    time_above_40 <- group_map(t %>% group_by(date),above_40)
+    sum <- t %>%
+      group_by(date) %>%
+      summarize(mean = mean(temp,na.rm = TRUE),
+                max = quantile(temp,probs = 0.95,na.rm = TRUE),
+                min = quantile(temp,probs = 0.05,na.rm = TRUE),
+                range = max-min) %>%
+      mutate(time_above_40 = unlist(time_above_40),
+             box = str_extract(logger_name,"[:graph:]*(?=-[:alpha:])"),
+             logger_position = str_extract(logger_name,"(?<=-)[:alpha:]+$"),
+             identity = paste(box,logger_position,as.character(date(date[1])),sep = "_"))
+  }
+
+  return(map(f,collapse))
+
+}
