@@ -16,6 +16,7 @@ require(lubridate)
 g <- read_rds("data/g.rds")
 t <- read_rds("data/temp.rds")
 cc <- read_rds("data/cc.rds")
+h <- read_rds("data/humidity.rds")
 
 # function to calculate growth by matching color and nestbox
 
@@ -100,6 +101,7 @@ dg <- gr %>%
   left_join(cc,by = join_by(year == year,Nestbox == nestbox),multiple = "first") # join canopy cover measurements
 
 filtertemp <- map2(pull(dg,interval),pull(dg,Nestbox),function(x,y){filter(t,date %within% x,box == y)}) # filter temp data to the applicable dates and boxes
+filterh <- map2(pull(dg,interval),pull(dg,Nestbox),function(x,y){filter(h,date %within% x,box == y)})
 
 dg <- dg %>%
   mutate(meanmaxtempI = filtertemp %>% # calculate mean max internal temp
@@ -113,12 +115,21 @@ dg <- dg %>%
          maxmaxtempO = filtertemp %>% # max max external temp
            map_dbl(function(x){filter(x,logger_position == "O") %>% pull(max) %>% max(na.rm = TRUE)}),
          cumulativeover40O = filtertemp %>% # time over 40 degrees C external
-           map_dbl(function(x){filter(x,logger_position == "O") %>% pull(time_above_40) %>% sum})) %>%
-  filter(!is.infinite(gweight)) %>% # filter out infinite gweights - need to figure out why this is happening
+           map_dbl(function(x){filter(x,logger_position == "O") %>% pull(time_above_40) %>% sum}),
+         meanh = filterh %>% # max max external temp
+           map_dbl(function(x){pull(mean) %>% mean()}),
+         meanmaxh = filterh %>% # max max external temp
+           map_dbl(function(x){pull(max) %>% mean()}),
+         meanminh = filterh %>% # max max external temp
+           map_dbl(function(x){pull(min) %>% mean()})) %>%
+  # filter(!is.infinite(gweight)) %>% # filter out infinite gweights - need to figure out why this is happening
   mutate(across(c(meanmaxtempI, # scale numeric responses and predictors
                   meanmaxtempO,
                   maxmaxtempI,
                   maxmaxtempO,
+                  meanh,
+                  maxh,
+                  minh,
                   cumulativeover40I,
                   cumulativeover40O,
                   canopy_cover,

@@ -251,10 +251,10 @@ get_temp_data <- function(dir){
     time_above_40 <- group_map(t %>% group_by(date),above_40)
     sum <- t %>%
       group_by(date) %>%
-      summarize(mean = mean(temp,na.rm = TRUE),
-                max = quantile(temp,probs = 0.95,na.rm = TRUE),
-                min = quantile(temp,probs = 0.05,na.rm = TRUE),
-                range = max-min) %>%
+      summarize(meant = mean(temp,na.rm = TRUE),
+                maxt = quantile(temp,probs = 0.95,na.rm = TRUE),
+                mint = quantile(temp,probs = 0.05,na.rm = TRUE),
+                ranget = maxt-mint) %>%
       mutate(time_above_40 = unlist(time_above_40),
              box = str_extract(logger_name,"[:graph:]*(?=-[:alpha:])"),
              logger_position = str_extract(logger_name,"(?<=-)[:alpha:]+$"),
@@ -277,32 +277,31 @@ get_humidity_data <- function(dir){
   collapse <- function(file_name) {
     # Given relative file name of temperature log from one logger, collapse into tibble with one row for each complete day of temperature data.
     if(read_csv(file_name) %>% problems() %>% nrow() > 100){
-      t <- (readLines(file_name) %>% tibble() %>% slice(2:n()) %>% pull() %>%
-              I() %>% read_csv(col_names = c("x1","x2","x3")))[,2:3]
+      t <- read_csv(file_name)[,c(2,4)]
+      # t <- (readLines(file_name) %>% tibble() %>% slice(2:n()) %>% pull() %>%
+      #         I() %>% read_csv(col_names = c("x1","x2","x3")))[,2:3]
     } else {
-      t <- read_csv(file_name)[,2:3]
+      t <- read_csv(file_name)[,c(2,4)]
     }
     logger_name <- str_extract(file_name,paste0("(?<=^",dir,"/)[:graph:]+(?=\\s)"))
-    names(t) <- c("datetime","temp")
+    names(t) <- c("datetime","humidity")
     t$datetime <- mdy_hms(t$datetime, tz = "America/Los_Angeles")
     t$date <- t$datetime %>% date()
-    above_40 <- function(d,...){
-      ifelse(nrow(filter(d,temp > 40,.preserve = TRUE)) == 0,
-             0,
-             interval(filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% min(na.rm = TRUE),
-                      filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% max(na.rm = TRUE)) / dhours(1))
-    }
-    time_above_40 <- group_map(t %>% group_by(date),above_40)
+    # above_40 <- function(d,...){
+    #   ifelse(nrow(filter(d,temp > 40,.preserve = TRUE)) == 0,
+    #          0,
+    #          interval(filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% min(na.rm = TRUE),
+    #                   filter(d,temp > 40,.preserve = TRUE) %>% pull(datetime) %>% max(na.rm = TRUE)) / dhours(1))
+    # }
+    # time_above_40 <- group_map(t %>% group_by(date),above_40)
     sum <- t %>%
       group_by(date) %>%
-      summarize(mean = mean(temp,na.rm = TRUE),
-                max = quantile(temp,probs = 0.95,na.rm = TRUE),
-                min = quantile(temp,probs = 0.05,na.rm = TRUE),
-                range = max-min) %>%
-      mutate(time_above_40 = unlist(time_above_40),
-             box = str_extract(logger_name,"[:graph:]*(?=-[:alpha:])"),
-             logger_position = str_extract(logger_name,"(?<=-)[:alpha:]+$"),
-             identity = paste(box,logger_position,as.character(date(date[1])),sep = "_"))
+      mutate(humidity = as.numeric(humidity)) %>%
+      summarize(meanh = mean(humidity,na.rm = TRUE),
+                maxh = quantile(humidity,probs = 0.95,na.rm = TRUE),
+                minh = quantile(humidity,probs = 0.05,na.rm = TRUE),
+                range = maxh-minh) %>%
+      mutate(box = str_extract(logger_name,"[:graph:]*(?=-[:alpha:])"))
   }
 
   return(map(f,collapse))
